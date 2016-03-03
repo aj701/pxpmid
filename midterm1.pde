@@ -16,8 +16,8 @@ void draw() {
   if (webCam.available()) webCam.read();
   webCam.loadPixels();
   int edgeAmount = 1;
-  for (int x = edgeAmount; x < width-edgeAmount; x+=16) {
-    for (int y = edgeAmount; y < height-edgeAmount; y+=6) {
+  for (int x = edgeAmount; x < width-edgeAmount; x+=12) {
+    for (int y = edgeAmount; y < height-edgeAmount; y+=4) {
       PxPGetPixel(x, y, webCam.pixels, width);
       //float gammaMaster = 2;
       //float newR = 255 * pow((R/255), gammaMaster);
@@ -32,18 +32,18 @@ void draw() {
       int newR = R;
       int newG = G;
       int newB = B;
-      float colorDifference = 16; //higher number = more accurate
+      float colorDifference = 1; //higher number = more accurate
       for (int blurX = x - edgeAmount; blurX <= x + edgeAmount; blurX++) {
         for (int blurY = y - edgeAmount; blurY <=y + edgeAmount; blurY++) {
           PxPGetPixel(blurX, blurY, webCam.pixels, width);
           colorDifference+=dist(R, G, B, newR, newG, newB);
         }
       }
-      int threshold = 100; //density of light pillars
+      int threshold = 180; //density of light pillars
       if (colorDifference > threshold) {
         stroke(newR, newG, newB);
-        float randX = random(0, 12);
-        line(x, y, x + randX, y + 720);
+        float randX = random(2, 22);
+        line(x, y, x+randX, y + 720);
       }
     }
   }

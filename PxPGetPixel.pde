@@ -1,3 +1,4 @@
+// Taken from Daniel Rozin's Artistic Edges Example
 int R, G, B, A;          // you must have these global varables to use the PxPGetPixel()
 void PxPGetPixel(int x, int y, int[] pixelArray, int pixelsWidth) {
   int thisPixel=pixelArray[x+y*pixelsWidth];     // getting the colors as an int from the pixels[]

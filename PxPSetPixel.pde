@@ -1,3 +1,4 @@
+// Taken from Daniel Rozin's Artistic Edges Example
 void PxPSetPixel(int x, int y, int r, int g, int b, int a, int[] pixelArray, int pixelsWidth) {
   a =(a << 24);                       
   r = r << 16;                       // We are packing all 4 composents into one int
